@@ -89,15 +89,11 @@ hardware; it is the navigation stack such hardware would plug into.
 
 ### Q-Nav Web UI
 
-![Q-Nav Web UI](docs/example.png.png)
+![Q-Nav Web UI](docs/example.png)
 
 ### Trajectory Comparison
 
-![Trajectory Comparison](docs/example1.png.png)
-
-### Drift Analysis
-
-![Drift Analysis](docs/example2.png.png)
+![Trajectory Comparison](docs/IMG_20260904_163459.png)
 
 ## Architecture
 
