@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Q-Nav — Quantum-Inertial Navigation</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<header>
+  <h1>Q-Nav</h1>
+  <span class="subtitle">Quantum-Inertial GPS-Denied Navigation — Prototype</span>
+</header>
+
+<div class="layout">
+  <aside class="panel">
+    <h2>Scenario</h2>
+    <form id="config-form">
+      <label>
+        Location
+        <input type="text" id="location" placeholder="e.g. Tokyo, Japan (blank = San Francisco)" />
+      </label>
+      <div class="row">
+        <label>
+          Latitude
+          <input type="number" id="lat" step="any" placeholder="optional" />
+        </label>
+        <label>
+          Longitude
+          <input type="number" id="lon" step="any" placeholder="optional" />
+        </label>
+      </div>
+      <label>
+        Duration (s)
+        <input type="number" id="duration" value="900" min="30" max="3600" step="10" />
+      </label>
+      <label>
+        GPS cutoff (s)
+        <input type="number" id="gps-cutoff" value="300" min="0" max="3600" step="10" />
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" id="gravity-matching" checked />
+        Gravity-map matching (Q-Nav)
+      </label>
+      <button type="submit" id="run-btn">Run Simulation</button>
+      <p id="status-line" class="status"></p>
+    </form>
+
+    <div id="results-panel" class="hidden">
+      <h2>Results</h2>
+      <table id="metrics-table"></table>
+      <p class="improvement" id="improvement-line"></p>
+      <div class="export-row">
+        <a id="export-csv" class="export-btn">Download CSV</a>
+        <a id="export-json" class="export-btn">Download JSON</a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div id="gps-banner" class="hidden">📡 GPS SIGNAL LOST — navigating on IMU + gravity map only</div>
+    <div id="map"></div>
+
+    <div class="playback">
+      <button id="play-btn" disabled>▶ Play</button>
+      <input type="range" id="progress" min="0" max="0" value="0" disabled />
+      <span id="time-label">t = 0 s</span>
+    </div>
+
+    <canvas id="drift-chart" height="180"></canvas>
+    <div class="legend-row">
+      <span><i class="swatch" style="background:#111"></i>Ground truth</span>
+      <span><i class="swatch" style="background:#d62728"></i>Classical IMU</span>
+      <span><i class="swatch" style="background:#1f77b4"></i>Quantum-Enhanced</span>
+      <span><i class="swatch" style="background:#2ca02c"></i>Q-Nav</span>
+    </div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
