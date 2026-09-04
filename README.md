@@ -285,7 +285,7 @@ python app.py
 
 # CLI
 python examples/run_demo.py                                  # default: San Francisco, USA
-python examples/run_demo.py --location "Nairobi, Kenya"
+python examples/run_demo.py --location "Paris, France"
 python examples/run_demo.py --lat -33.8688 --lon 151.2093     # Sydney
 python examples/run_demo.py --duration 600 --gps-cutoff 180
 python examples/run_demo.py --no-gravity-matching
